@@ -26,4 +26,6 @@ with open("input.txt", "r") as file:
     df=pd.DataFrame(final_paragraph)
     
     df.to_csv("sorted_paragraph.csv", index=False)
+    for word,count in final_paragraph:
+        print(f'{word}: {count}')
         
