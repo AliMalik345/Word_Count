@@ -12,9 +12,22 @@
     with open("input.txt", "r") as file:
     paragraph=file.read()
 
-### Passing it to remove_punctuation function to get rid of punctuations while converting the text into lowercase to avoid matchcase problem:
+### To remove punctuations:
     paragraph= remove_punctuations(paragraph.lower())
-    
-count_words function seperates words on the basis of white spaces using split(), Initialized a dictionary and stored each word as a key while iterating it's value by 1 each time it appears and then return the final dictionary.
-sort_paragraph takes the value of the keys and sort them in decsending order.sorted by default sort the values in ascending order so we use reverse=True to change them into descending order
-Finally we converted the sorted list into a csv file with word and it's total count.
+
+
+### Count the words in the para:
+    count_words(paragraph)
+
+
+### Sort the list in descending Order:
+    final_paragraph = sort_paragraph(count_words(paragraph))
+
+
+### Run to make a csv file of the output:
+    df=pd.DataFrame(final_paragraph)
+    df.to_csv("sorted_paragraph.csv", index=False)
+
+### Print the Output:
+     for word,count in final_paragraph:
+        print(f'{word}: {count}')
